@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Google Fonts Import
+   ========================================================================== */
+
+/* to import Google Fonts here as needed */
+
+/* ==========================================================================
+   Base Mechanics
+   ========================================================================== */
+
+/* Modern Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;  
+}
+
+/* Enable native smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Lists */
+ul {
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+}
+
+/* Accessibility Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--text-bright);
+  color: var(--bg-primary);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  border-radius: var(--radius-sm);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ==========================================================================
+   Root Variables and Body Styles
+   ========================================================================== */
+
+:root {
+  /* Layout Tokens */
+  --max-width-wide: 71.25rem; /* 1140px */
+  
+  /* Color Palette */
+  --bg-primary: #333f31; 
+  --text-bright: #ffffff;
+  --text-muted: #a3b8a3;
+  --border-subtle: rgba(255, 255, 255, 0.15);
+
+  /* Typography */
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+
+  /* Component Tokens */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-primary);
+  color: var(--text-bright);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-base);
+  color: var(--text-bright);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+}
+
+/* Default typographic scale for standard HTML tags */
+h1 { font-size: clamp(2.25rem, 4vw, 3.25rem); }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--text-bright);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Hover style */
+a:hover,
+a:focus-visible {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Images
+   ========================================================================== */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+/* Wide Image */
+.wide-image {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  margin-block: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Figure Container */
+.image-figure {
+  margin-block: 0;
+  margin-inline: 0;
+  text-align: center;
+}
+
+/* Figure Captions */
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Header & Menu
+   ========================================================================== */
+
+/* Header */
+
+.header {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-primary);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width-wide);
+  width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 1.5rem;
+  position: relative; /* Anchors mobile dropdown */
+}
+
+/* Logo */
+
+.header-logo {
+  height: 3.25rem; /* ~52px tall keeps header slim */
+  width: auto;     /* Preserves logo aspect ratio */
+  display: block;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-bright);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.logo-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap; /* Prevents text wrapping awkwardly on small screens */
+}
+
+/* Desktop Menu */
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  color: var(--text-bright);
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-muted);
+}
+
+.text-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: var(--text-bright);
+}
+
+/* Hamburger Menu */
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-bright);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger Menu Overrides (< 1024px) */
+
+@media (max-width: 1023px) {
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: none; /* Correctly hides inline menu on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  /* Toggled active state */
+  .nav-links.is-active {
+    display: flex;
+  }
+
+  /* Hamburger icon morph to 'X' */
+  .hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* ==========================================================================
+   Standard Site Components
+   ========================================================================== */
+
+.main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  padding: 0;
+}
+
+hr.divider-full {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--border-subtle) 20%, 
+    var(--border-subtle) 80%, 
+    transparent 100%
+  );
+  margin-block: 1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-bottom: 3rem;
+}
+
+.section-header .section-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.prose-container {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.prose-container ul { /* Styles all content lists automatically */
+  width: fit-content;
+  margin-inline: auto;
+  text-align: left;
+  list-style-position: outside;
+  padding-left: 1.25rem;
+  margin-block: 1rem;
+}
+
+/* ==========================================================================
+   Custom Site Components
+   ========================================================================== */
+
+/* to add custom components here as needed */
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  text-align: center;
+  padding: 1.25rem 2rem;
+  font-size: var(--font-size-base);
+  color: var(--text-muted);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Links within the footer */
+.footer a {
+  color: var(--text-muted); /* Matches default footer text color */
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+/* Hover and focus states for accessibility */
+.footer a:hover,
+.footer a:focus {
+  color: var(--text-bright);
+}
