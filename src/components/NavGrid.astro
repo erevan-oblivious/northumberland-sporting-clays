@@ -5,6 +5,8 @@ interface CardItem {
   link: string;
   linkText?: string;
   accent?: string;
+  image?: string; /* Path to card image */
+  imageAlt?: string; /* Optional alt text */
 }
 
 interface Props {
@@ -16,25 +18,31 @@ interface Props {
 
 const defaultItems: CardItem[] = [
   {
-    title: "Primary Services",
-    description: "Comprehensive solutions tailored to your needs, delivered with consistency and attention to detail.",
-    link: "/services",
-    linkText: "Explore Services",
-    accent: "primary"
+    title: "Shooting Lessons",
+    description: "Learn how to shoot clay pigeons with confidence.",
+    link: "/shooting-lessons",
+    linkText: "More Info",
+    accent: "primary",
+    image: "/shooting-lesson-1.jpg",
+    imageAlt: "Person receiving a shooting lesson"
   },
   {
-    title: "About Our Business",
-    description: "Learn more about our practice, our values, and our commitment to exceptional service quality.",
-    link: "/about",
-    linkText: "Read Our Story",
-    accent: "secondary"
+    title: "Gift Vouchers",
+    description: "Gift someone a new and unique experience.",
+    link: "/gift-vouchers",
+    linkText: "Buy Now",
+    accent: "primary",
+    image: "/group-lesson-2.jpg",
+    imageAlt: "Clay shooting gift voucher"
   },
   {
-    title: "Contact Us",
-    description: "Get in touch with us",
-    link: "/contact",
-    linkText: "Contact Us",
-    accent: "primary"
+    title: "Hens and Stags",
+    description: "Unforgettable fun for the whole party.",
+    link: "/hens-and-stags",
+    linkText: "More Info",
+    accent: "primary",
+    image: "/stag-1.jpg",
+    imageAlt: "Group enjoying a stag do shoot"
   }
 ];
 
@@ -62,6 +70,18 @@ const {
         <a href={item.link} class={`nav-card ${item.accent ? `accent-${item.accent}` : ''}`}>
           <!-- Decorative Accent Border -->
           <div class="card-border-top"></div>
+          
+          <!-- Card Image Header -->
+          {item.image && (
+            <div class="card-image-wrapper">
+              <img 
+                src={item.image} 
+                alt={item.imageAlt || item.title} 
+                loading="lazy" 
+                decoding="async"
+              />
+            </div>
+          )}
           
           <div class="card-content">
             <h3 class="card-title">{item.title}</h3>
@@ -117,7 +137,7 @@ const {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted, var(--text-bright));
+    color: var(var(--bg-primary));
     display: block;
     margin-bottom: 0.5rem;
   }
@@ -132,7 +152,7 @@ const {
 
   .section-subtitle {
     font-size: 1.0625rem;
-    color: var(--text-muted);
+    color: var(--text-bright);
     line-height: 1.5;
     margin: 0;
   }
@@ -165,19 +185,33 @@ const {
     width: 100%;
     background-color: transparent;
     transition: background-color 0.25s ease;
+    z-index: 2;
   }
 
   .nav-card.accent-primary .card-border-top {
-    background-color: var(--text-muted, var(--text-bright));
+    background-color: var(--bg-secondary);
   }
 
-  .nav-card.accent-secondary .card-border-top {
-    background-color: var(--text-muted, var(--text-muted));
+  /* Image Container & Sizing */
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
-  /* Inner Padding */
+  .card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Inner Content Padding */
   .card-content {
-    padding: 2rem 1.75rem 1.75rem;
+    padding: 1.5rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -186,19 +220,19 @@ const {
   /* Typography */
   .card-title {
     font-family: var(--font-family-base);
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-bright);
     line-height: 1.25;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.5rem 0;
     transition: color 0.2s ease;
   }
 
   .card-description {
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0 0 2rem 0;
+    color: var(--text-bright);
+    margin: 0 0 1.5rem 0;
     flex-grow: 1;
   }
 
@@ -209,7 +243,7 @@ const {
     gap: 0.5rem;
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--text-bright);
+    color: var(--bg-secondary);
     margin-top: auto;
   }
 
@@ -221,17 +255,16 @@ const {
   .nav-card:hover {
     transform: translateY(-4px);
     border-color: var(--border-subtle);
-    box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
   }
 
-  .nav-card:hover .card-title,
-  .nav-card:hover .action-text {
-    color: var(--text-muted, var(--text-bright));
+  /* Subtle image zoom on hover */
+  .nav-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
   }
 
   .nav-card:hover .action-arrow {
     transform: translateX(5px);
-    color: var(--text-muted, var(--text-bright));
   }
 
   @media (max-width: 640px) {

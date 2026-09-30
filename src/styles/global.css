@@ -52,9 +52,10 @@ ul {
   --max-width-wide: 71.25rem; /* 1140px */
   
   /* Color Palette */
-  --bg-primary: #333f31; 
-  --text-bright: #ffffff;
-  --text-muted: #a3b8a3;
+  --bg-primary: #FFFBF3;
+  --bg-secondary: #1279BE;
+  --text-bright: #000000;
+  --text-muted: #FFFBF3;
   --border-subtle: rgba(255, 255, 255, 0.15);
 
   /* Typography */
@@ -108,7 +109,7 @@ p:last-child {
 }
 
 a {
-  color: var(--text-bright);
+  color: var(--bg-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -116,7 +117,7 @@ a {
 /* Hover style */
 a:hover,
 a:focus-visible {
-  color: var(--text-muted);
+  color: var(--bg-secondary);
 }
 
 /* ==========================================================================
@@ -168,11 +169,19 @@ figcaption {
   background-color: var(--bg-primary);
 }
 
+.header-transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 100;
+}
+
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--max-width-wide);
   width: 100%;
   margin-inline: auto;
   padding: 1.25rem 1.5rem;
@@ -191,7 +200,7 @@ figcaption {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--text-bright);
+  color: var(--text-muted);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -210,7 +219,7 @@ figcaption {
 }
 
 .nav-links a {
-  color: var(--text-bright);
+  color: var(--text-muted);
   text-decoration: none;
   text-align: center;
   transition: color 0.2s ease;
@@ -248,7 +257,7 @@ figcaption {
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--text-bright);
+  background-color: var(--text-muted);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -267,7 +276,7 @@ figcaption {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
     flex-direction: column;
     padding: 1.5rem 2.5rem;
     gap: 1.25rem;
@@ -302,7 +311,6 @@ figcaption {
 .main {
   flex-grow: 1;
   width: 100%;
-  max-width: var(--max-width-wide);
   margin-inline: auto;
   padding: 0;
 }
@@ -313,8 +321,8 @@ hr.divider-full {
   background: linear-gradient(
     90deg, 
     transparent 0%, 
-    var(--border-subtle) 20%, 
-    var(--border-subtle) 80%, 
+    var(--bg-secondary) 20%, 
+    var(--bg-secondary) 80%, 
     transparent 100%
   );
   margin-block: 1.5rem;
@@ -338,7 +346,7 @@ hr.divider-full {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--bg-secondary);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -377,6 +385,7 @@ hr.divider-full {
   text-align: center;
   padding: 1.25rem 2rem;
   font-size: var(--font-size-base);
+  background-color: var(--bg-secondary);
   color: var(--text-muted);
 }
 

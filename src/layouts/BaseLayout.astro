@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  transparentHeader?: boolean; /* Allows for optional transparent header for homepage */
 }
 
 const { 
-  title = "Website Title", 
-  description = "Website Description" 
+  title = "Northumberland Sporting Clays", 
+  description = "Clay pigeon shooting for beginners, groups and fun days out",
+  transparentHeader = false
 } = Astro.props;
 ---
 
@@ -28,11 +30,10 @@ const {
     
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<header class="header">
+<header class={`header ${transparentHeader ? 'header-transparent' : ''}`}>
   <div class="header-inner">
       <a href="/" class="logo-link">
-        <img src="/favicon.svg" alt="" class="header-logo" width="32" height="32"/>
-        <span class="logo-title">Website Title</span>
+        <span class="logo-title">Northumberland Sporting Clays</span>
       </a>
 
     <!-- Hamburger Toggle Button -->

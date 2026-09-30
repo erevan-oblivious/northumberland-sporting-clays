@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import HeroImage from '../components/HeroImage.astro';
+import TickList from '../components/TickList.astro';
 import NavGrid from '../components/NavGrid.astro'
 
 ---
@@ -8,14 +10,28 @@ import NavGrid from '../components/NavGrid.astro'
 <BaseLayout 
   title="Webpage Name | Business Name"
   description="Webpage Description"
+  transparentHeader={true}
 >
 
-<section class="section-header">
+<HeroImage 
+    title="Clay Pigeon Shooting in Northumberland"
+    lead="Shooting Lessons for beginners, groups and fun days out"
+    bgImage="/shooting-lesson-4.jpg"
+    bgImageMobile="/shooting-lesson-2.jpg"
+    tintOpacity="25%"
+    primaryButtonText="Book Now"
+    primaryButtonLink="/contact"
+    secondaryButtonText="Add downward arrow"
+    secondaryButtonLink="/"
+/>
 
-<h1>Home</h1>
+<TickList />
 
-</section>
+<hr class="divider-full" />
 
-<NavGrid />
+<NavGrid 
+eyebrow="Explore"
+title="Most Popular"
+/>
 
 </BaseLayout>
