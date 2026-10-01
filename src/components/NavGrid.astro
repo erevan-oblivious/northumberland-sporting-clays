@@ -1,11 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import lessonImg from '../images/shooting-lesson-1.jpg';
+import voucherImg from '../images/group-lesson-2.jpg';
+import partyImg from '../images/stag-1.jpg';
+
 interface CardItem {
   title: string;
   description: string;
   link: string;
   linkText?: string;
   accent?: string;
-  image?: string; /* Path to card image */
+  image?: ImageMetadata; /* Path to card image */
   imageAlt?: string; /* Optional alt text */
 }
 
@@ -23,7 +29,7 @@ const defaultItems: CardItem[] = [
     link: "/shooting-lessons",
     linkText: "More Info",
     accent: "primary",
-    image: "/shooting-lesson-1.jpg",
+    image: lessonImg,
     imageAlt: "Person receiving a shooting lesson"
   },
   {
@@ -32,16 +38,16 @@ const defaultItems: CardItem[] = [
     link: "/gift-vouchers",
     linkText: "Buy Now",
     accent: "primary",
-    image: "/group-lesson-2.jpg",
+    image: voucherImg,
     imageAlt: "Clay shooting gift voucher"
   },
   {
     title: "Hens and Stags",
     description: "Unforgettable fun for the whole party.",
-    link: "/hens-and-stags",
+    link: "/stag-and-hen",
     linkText: "More Info",
     accent: "primary",
-    image: "/stag-1.jpg",
+    image: partyImg,
     imageAlt: "Group enjoying a stag do shoot"
   }
 ];
@@ -74,11 +80,12 @@ const {
           <!-- Card Image Header -->
           {item.image && (
             <div class="card-image-wrapper">
-              <img 
+              <Image 
                 src={item.image} 
-                alt={item.imageAlt || item.title} 
-                loading="lazy" 
-                decoding="async"
+                alt={item.imageAlt || item.title}
+                widths={[400, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                format="webp"
               />
             </div>
           )}
@@ -126,21 +133,6 @@ const {
   }
 
   /* Section Header */
-  .section-header {
-    text-align: center;
-    max-width: 42rem;
-    margin: 0 auto 3rem;
-  }
-
-  .section-eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(var(--bg-primary));
-    display: block;
-    margin-bottom: 0.5rem;
-  }
 
   .section-title {
     font-family: var(--font-family-base);
