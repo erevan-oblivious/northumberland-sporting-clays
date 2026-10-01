@@ -472,5 +472,5 @@ hr.divider-full-inverted {
 /* Hover and focus states for accessibility */
 .footer a:hover,
 .footer a:focus {
-  color: var(--text-bright);
+  color: var(--text-muted);
 }
