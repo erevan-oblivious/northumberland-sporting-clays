@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import Image1 from '../images/hen-1.jpg';
+import BookingButtons from '../components/BookingButtons.astro';
 
 ---
 
@@ -9,9 +11,25 @@ import { Image } from 'astro:assets';
   description="Celebrate your special occasions with us"
 >
 
-<section class="prose-container">
+<section>
 
-<h1>Stag and Hen Parties</h1>
+  <header class="section-header">
+    <span class="section-eyebrow">Special Occasions</span>
+    <h1>Stag and Hen Parties</h1>
+  </header>
+
+  <div class="prose-container">
+    <p>Enjoy a fun filled day out with your closest friends, costumes and good spirits encouraged!</p>
+    <p>Learning to shoot makes for a fantastic shared experience for hen and stags parties alike or indulge in a simulated game shoot for those wishing for a full blown adventure.</p>
+  </div>
+
+  <Image src={Image1} alt="Hen party at Northumberland Sporting Clays" height="400" width="600" class="wide-image" />
+
+  <div class="prose-container">
+    <h2>How to Book</h2>
+    <p>Please contact us to arrange your day out.</p>
+    <BookingButtons />
+  </div>
 
 </section>
 

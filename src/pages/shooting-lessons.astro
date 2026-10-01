@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-
+import Image1 from '../images/shooting-lesson-6.jpg';
+import Image2 from '../images/shooting-lesson-3.jpg';
+import Image3 from '../images/shooting-lesson-5.jpg';
 ---
 
 <BaseLayout 
@@ -9,9 +11,42 @@ import { Image } from 'astro:assets';
   description="Shooting lessons for individuals, groups and parties"
 >
 
-<section class="prose-container">
+<section>
 
-<h1>Shooting Lessons</h1>
+  <header class="section-header">
+    <span class="section-eyebrow">£70 per person per lesson</span>
+    <h1>Shooting Lessons</h1>
+  </header>
+
+  <div class="prose-container">
+    <p>In clay pigeon shooting you can have fun regardless of experience, age or gender! It is a skill that most people are able to learn.</p>
+    <p>An individual lesson takes around 1-1.5 hours and includes 35 cartridges and clays - giving you a really good shoot.</p>
+    <p>For pairs and groups we conduct the lessons in turns - with a maximum of six persons per coach. </p>
+  </div>
+
+  <Image src={Image1} alt="Person receiving a shooting lesson" height="400" width="600" class="wide-image" />
+
+  <div class="prose-container">
+    <p>The session starts in the bothy with a full safety briefing. This includes safe and correct removal of a gun from a gun slip, muzzle awareness, checking the gun is empty and safely placing the gun back into to the gun slip.</p>
+    <p>We check your sight for eye dominance and then demonstrate the correct stance to adopt when shooting. Your coach will then explain the various parts of the shotgun so you get a basic understanding of the gun you are using. We have lots of guns to fit all sizes of people, from the lightweight to the more substantial!</p>
+    <p>Then it is off to the shooting ground and the beginning of a great outdoor experience.</p>
+    <p>All lessons are conducted on private ground, so no need to feel self-conscious or worry about making mistakes in front of a crowd. Your coach will help you stand and hold the gun properly, and safely, as well as explain the techniques used for the particular targets you will be presented with.</p>
+  </div>
+
+  <Image src={Image2} alt="Person receiving a shooting lesson" height="400" width="600" class="wide-image" />
+
+  <div class="prose-container">
+    <p>We have helped many, many people to progress from complete beginner right through to becoming fully competent and safe club shooters. Once you have learned the basics and are safe in your gun handling, it is then up to you how far you wish to go in shooting sports.</p>
+    <p>Many clients consistently return to us for further lessons, taking their time to master the technique for each type of target before moving on to the next. This progressive method enables you to build up a memory bank of techniques for any type of target.</p>
+    <p>We give complete support to our clients who learn with us and will provide you with all the free advice and guidance you will ever need: from obtaining your own shotgun certificate, to help in choosing your very first shotgun with advice on which guns to consider, where to buy from, gun fit, how much to pay, and all the other associated questions that you will inevitably have.</p>
+  </div>
+
+  <Image src={Image3} alt="Person receiving a shooting lesson" height="400" width="600" class="wide-image" />
+
+  <div class="prose-container">
+    <p>We can also arrange introductions to gun clubs who usually shoot every second Sunday morning and some on a Wednesday evening during the lighter nights. Club membership is a cheap way of shooting and a tremendous opportunity to get some regular practice in for those of a competitive nature. The clubs usually have regular competitions too and no-one bats an eyelid at anyone having a bad day, we've all been there!</p>
+    <p>Shooting attracts like-minded people from literally all walks of life and raises millions of pounds every year throughout the UK for charity through charity shoots. These are a great day out and you get to see places you would never otherwise see and mix with some great folk, all for the benefit of usually local charities.</p>
+  </div>
 
 </section>
 

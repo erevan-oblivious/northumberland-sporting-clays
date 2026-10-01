@@ -5,6 +5,15 @@ import HeroImage from '../components/HeroImage.astro';
 import TickList from '../components/TickList.astro';
 import NavGrid from '../components/NavGrid.astro';
 
+const shootingHighlights = [
+    "Spend a day in the beautiful Northumberland countryside",
+    "An opportunity to try something completely different and learn something new",
+    "A basic shooting level can be mastered in a short space of time",
+    "Inclusive and enjoyable regardless of age, fitness and ability",
+    "Book individual lessons, group lessons, stag and hen does, or corporate away days",
+    "A great day out for friends, families or colleagues!",
+  ];
+
 ---
 
 <BaseLayout 
@@ -25,7 +34,10 @@ import NavGrid from '../components/NavGrid.astro';
     primaryButtonLink2="tel:+447709084699"
 />
 
-<TickList />
+<TickList 
+  eyebrow="We cater for everyone from personal lessons to group days out"
+  title="Why Choose Clay Pigeon Shooting?"
+  items={shootingHighlights} />
 
 <hr class="divider-full" />
 

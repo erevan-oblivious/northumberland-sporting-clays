@@ -1,6 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import TickList from '../components/TickList.astro';
+import BookingButtons from '../components/BookingButtons.astro';
+
+const giftVoucherHighlights = [
+    "Looking for a different kind of gift?",
+    "Looking for a gift for that person you never know what to buy for?",
+    "Looking for a gift that says ' I've thought about this'?",
+    "Looking for a retirement/anniversary/graduation/birthday celebration?",
+    "Looking to tick something off the bucket list?",
+    "Why not give the gift of a Shooting Experience? Vouchers cover a full lesson.",
+    "Suitable for young and old, male or female. Why not buy for all the family and make a day of it?",
+  ];
 
 ---
 
@@ -9,9 +21,25 @@ import { Image } from 'astro:assets';
   description="Gift vouchers for the perfect present"
 >
 
-<section class="prose-container">
+<section>
 
-<h1>Gift Vouchers</h1>
+  <header class="section-header">
+    <span class="section-eyebrow">£75 per voucher</span>
+    <h1>Gift Vouchers</h1>
+  </header>
+
+<TickList
+  items={giftVoucherHighlights}
+/>
+
+<div class="prose-container">
+  <h2>How to Order</h2>
+  <p>£75 per voucher - available for purchase by email or phone.</p>
+  <p>Please contact us to arrange your gift voucher.</p>
+  <p>No expiry date.</p>
+</div>
+
+<BookingButtons />
 
 </section>
 
